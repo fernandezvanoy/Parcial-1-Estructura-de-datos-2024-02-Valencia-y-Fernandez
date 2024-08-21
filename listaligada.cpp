@@ -67,11 +67,7 @@ void ListaLigada::agregar(const Producto& producto, int index) {
         cabeza = nuevoNodo;
     
     } else {
-        Nodo* actual = cabeza;
-        while(actual -> siguiente != nullptr) {
-            actual = actual -> siguiente;
-        }
-        actual->siguiente = nuevoNodo;
+      final->siguiente = nuevoNodo;
     }
     nuevoNodo->anterior = final;
     final = nuevoNodo;
@@ -183,66 +179,67 @@ Nodo* ListaLigada::buscarNodo(int n){
     return nodoActual;    
 }
 
-Nodo* ListaLigada::mergeSort(Nodo* cabeza) {
-        // Caso base: si la lista es vacía o tiene solo un nodo, está ordenada
-        if (!cabeza || !cabeza->siguiente) {
-            return cabeza;
-        }
-
-        // Encuentra el nodo del medio para dividir la lista en dos mitades
-        Nodo* mitad = obtenerMitad(cabeza);
-        Nodo* siguienteDeMitad = mitad->siguiente;  // Apunta al nodo que sigue al medio
-        mitad->siguiente = nullptr;  // Divide la lista en dos partes cortando el enlace
-
-        // Ordena recursivamente ambas mitades
-        Nodo* izquierda = mergeSort(cabeza);
-        Nodo* derecha = mergeSort(siguienteDeMitad);
-
-        // Combina las dos mitades ordenadas en una lista ordenada
-        return merge(izquierda, derecha);
+Nodo *ListaLigada::mergeSort(Nodo *cabeza)
+{
+    // Caso base: si la lista es vacía o tiene solo un nodo, está ordenada
+    if (!cabeza || !cabeza->siguiente)
+    {
+        return cabeza;
     }
 
-    Nodo* ListaLigada::obtenerMitad(Nodo* cabeza) {
-        // Caso base: si la lista es vacía, devuelve el mismo nodo
-        if (!cabeza) return cabeza;
+    // Encuentra el nodo del medio para dividir la lista en dos mitades
+    Nodo *mitad = obtenerMitad(cabeza);
+    Nodo *siguienteDeMitad = mitad->siguiente; // Apunta al nodo que sigue al medio
+    mitad->siguiente = nullptr;                // Divide la lista en dos partes cortando el enlace
 
-        // Inicializa dos punteros, mitad y rápido
-        Nodo* mitad = cabeza;
-        Nodo* fin = cabeza->siguiente;
+    // Ordena recursivamente ambas mitades
+    Nodo *izquierda = mergeSort(cabeza);
+    Nodo *derecha = mergeSort(siguienteDeMitad);
 
-        // Avanza mitad un nodo a la vez y rápido dos nodos a la vez
-        while (fin && fin->siguiente) {
-            mitad = mitad->siguiente;  // mitad avanza un nodo
-            fin = fin->siguiente->siguiente;  // Rápido avanza dos nodos
-        }
+    // Combina las dos mitades ordenadas en una lista ordenada
+    return merge(izquierda, derecha);
+}
 
-        // mitad estará en la mitad de la lista cuando rápido llegue al final
-        return mitad;
+Nodo *ListaLigada::obtenerMitad(Nodo *cabeza)
+{
+    // Caso base: si la lista es vacía, devuelve el mismo nodo
+    if (!cabeza)
+        return cabeza;
+
+    // Inicializa dos punteros, mitad y rápido
+    Nodo *mitad = cabeza;
+    Nodo *fin = cabeza->siguiente;
+
+    // Avanza mitad un nodo a la vez y rápido dos nodos a la vez
+    while (fin && fin->siguiente)
+    {
+        mitad = mitad->siguiente;        // mitad avanza un nodo
+        fin = fin->siguiente->siguiente; // Rápido avanza dos nodos
     }
 
-    Nodo* ListaLigada::merge(Nodo* izquierda, Nodo* derecha) {
-        // Si una de las listas está vacía, devuelve la otra lista
-        if (!izquierda) return derecha;
-        if (!derecha) return izquierda;
+    // mitad estará en la mitad de la lista cuando rápido llegue al final
+    return mitad;
+}
 
-        // Compara los datos en los nodos de ambas listas.
-        if (izquierda->data.getAtributo() <= derecha->data.getAtributo()) {
-            // Si el nodo de la izquierda es menor o igual, sigue combinando el siguiente nodo de la izquierda con la lista derecha
-            izquierda->siguiente = merge(izquierda->siguiente, derecha);
-            return izquierda;  // Devuelve el nodo izquierdo como cabeza de la lista combinada
-        } else {
-            // Si el nodo de la derecha es menor, sigue combinando la lista izquierda con el siguiente nodo de la derecha
-            derecha->siguiente = merge(izquierda, derecha->siguiente);
-            return derecha;  // Devuelve el nodo derecho como cabeza de la lista combinada
-        }
+Nodo *ListaLigada::merge(Nodo *izquierda, Nodo *derecha)
+{
+    // Si una de las listas está vacía, devuelve la otra lista
+    if (!izquierda)
+        return derecha;
+    if (!derecha)
+        return izquierda;
+
+    // Compara los datos en los nodos de ambas listas.
+    if (izquierda->data.getAtributo() <= derecha->data.getAtributo())
+    {
+        // Si el nodo de la izquierda es menor o igual, sigue combinando el siguiente nodo de la izquierda con la lista derecha
+        izquierda->siguiente = merge(izquierda->siguiente, derecha);
+        return izquierda; // Devuelve el nodo izquierdo como cabeza de la lista combinada
     }
-
-
-
-
-
-
-
-
-
-
+    else
+    {
+        // Si el nodo de la derecha es menor, sigue combinando la lista izquierda con el siguiente nodo de la derecha
+        derecha->siguiente = merge(izquierda, derecha->siguiente);
+        return derecha; // Devuelve el nodo derecho como cabeza de la lista combinada
+    }
+}
