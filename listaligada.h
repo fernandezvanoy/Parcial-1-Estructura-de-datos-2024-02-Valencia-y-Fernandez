@@ -7,16 +7,20 @@
 class ListaLigada {
 private:
 
+    //atributos privados de la lista
     Nodo* cabeza;
-    Nodo* inicio;
     Nodo* final;
     
 
 public: 
+
+    //construcor
     ListaLigada();
 
+    //desctructor
     ~ListaLigada();
 
+    //otros metodos:
     Nodo* getFinal();
 
     Nodo* getCabeza();

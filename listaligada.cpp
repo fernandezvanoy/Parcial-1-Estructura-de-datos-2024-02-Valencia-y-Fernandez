@@ -3,6 +3,7 @@
 
 ListaLigada::ListaLigada() : cabeza(nullptr), final(nullptr) {}
 
+
 //Constructor de la lista ligada, establece cabeza vacía por defecto
 ListaLigada::~ListaLigada() {
     Nodo* actual = cabeza;
@@ -31,15 +32,22 @@ long long ListaLigada::sort(int select){
     //al inicio y al final se usan marcas de tiempo para calcular su diferencia
     if(select == 1){
 
-
+        //inicia una marca de tiempo
+        //luego hace referencia a la instancia de la clase e invoca la función bubble sort
+        //toma la segunda marca de tiempo
         auto inicio = high_resolution_clock::now();
         this->bubblesort();
         auto fin = high_resolution_clock::now();
 
+        //calcula la diferencia entre ambas marcas de tiempo
         duracion = duration_cast<milliseconds>(fin - inicio).count();
     }
 
     if(select == 2){
+
+        //inicia una marca de tiempo
+        //luego hace referencia a la instancia de la clase e invoca la función quick sort
+        //toma la segunda marca de tiempo
         auto inicio = high_resolution_clock::now();
         this->quicksort();
         auto fin = high_resolution_clock::now();
@@ -48,6 +56,10 @@ long long ListaLigada::sort(int select){
     }
 
     if(select == 3){
+
+        //inicia una marca de tiempo
+        //luego hace referencia a la instancia de la clase e invoca la función merge sort
+        //toma la segunda marca de tiempo
         auto inicio = chrono::high_resolution_clock::now();
         this->mergeSort(this->cabeza);
         auto fin = high_resolution_clock::now();
@@ -96,6 +108,7 @@ void ListaLigada::intercambiar(Nodo* nodo1, Nodo* nodo2) {
 
 //Método de bubble sort
 //Compara los atributos almacenados en datos y segun la condición intercambia estos datos almacenados en los nodos
+//no cambia los apuntadores de los nodos solo los datos que contienen los nodos
 //lleva los datos mas grandes a los últimos nodos
 //una vez no realice ningun cambio termina el ciclo lo que significa la lista ya está ordenada
 void ListaLigada::bubblesort() {

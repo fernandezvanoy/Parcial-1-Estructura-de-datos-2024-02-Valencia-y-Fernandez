@@ -13,6 +13,8 @@ using namespace std;
 
 class Procesos {
 private:
+
+    //aqui se almacenan las palabras que usa el generador para generar los nombres de los productos
     vector<string> lista1 = {"Pan", "Postre", "Pasta", "Cereal", "Tortilla", "Cupcake", "Galleta", "Arroz"};
     vector<string> lista2 = {"Trigo", "Avena", "Maiz", "Harina", "Centeno", "Aniz", "Soda", "Integral"};
     vector<string> lista3 = {"Energia", "Cafeina", "Delicia", "Dulce", "Fresco", "Suave", "Crocante", "Ligero"};
@@ -32,8 +34,8 @@ public:
 
     string obtenerItemRandom(vector<string>);
 
+    int generarfecha();
 
-   
 };
 
 #endif

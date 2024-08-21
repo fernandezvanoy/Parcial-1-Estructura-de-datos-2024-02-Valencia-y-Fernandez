@@ -26,7 +26,7 @@ int main() {
 
     //un ciclo que agrega los nodos donde se pasa al constructor de la clase un objeto de tipo Producto que usa los métodos para generar un registro
     for (int i=0;i<n;++i){
-        lista.agregar(Producto(generador.generarNumEntero(1, 250000), generador.generarNombre(), generador.generarNumEntero(1, 100), generador.generarNumEntero(100, 200000), 15072024), i);
+        lista.agregar(Producto(generador.generarNumEntero(1, 250000), generador.generarNombre(), generador.generarNumEntero(1, 100), generador.generarNumEntero(100, 200000), generador.generarfecha()), i);
     }
 
     //muestra la lista
