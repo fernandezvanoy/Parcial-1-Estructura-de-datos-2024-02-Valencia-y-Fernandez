@@ -3,6 +3,8 @@
 
 Procesos::Procesos() {}
 
+ 
+
 int Procesos::generarNumEntero(int min, int max) const{
     return min + std::rand() % (max - min + 1);
 }
@@ -18,7 +20,7 @@ string Procesos::generarNombre(){
 string Procesos::listaRandom(){
     int n = generarNumEntero(1, 5);
 
-    cout << n << endl;
+ 
 
     string a;
 

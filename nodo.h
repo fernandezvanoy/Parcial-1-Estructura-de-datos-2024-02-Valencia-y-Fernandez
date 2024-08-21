@@ -7,9 +7,12 @@ class Nodo{
 public:
     Producto data;
     Nodo* siguiente;
+    Nodo* anterior;
+    int index;
 
-    Nodo(const Producto& data);
+    Nodo(const Producto& data, int index);
 
+    //int getIndex();
 };
 
 #endif
