@@ -61,7 +61,7 @@ long long ListaLigada::sort(int select){
         //luego hace referencia a la instancia de la clase e invoca la función merge sort
         //toma la segunda marca de tiempo
         auto inicio = chrono::high_resolution_clock::now();
-        this->mergeSort(this->cabeza);
+        this->mergePrincipal();
         auto fin = high_resolution_clock::now();
 
         duracion = duration_cast<milliseconds>(fin - inicio).count();
@@ -298,4 +298,22 @@ Nodo *ListaLigada::merge(Nodo *izquierda, Nodo *derecha)
         derecha->siguiente = merge(izquierda, derecha->siguiente);
         return derecha; // Devuelve el nodo derecho como cabeza de la lista combinada
     }
+}
+
+void ListaLigada::mergePrincipal(){
+    cabeza = mergeSort(cabeza);
+    actualizarFinal();
+}
+
+void ListaLigada::actualizarFinal() {
+    if (!cabeza) {
+        final = nullptr;
+        return;
+    }
+
+    Nodo* temp = cabeza;
+    while (temp->siguiente) {
+        temp = temp->siguiente;
+    }
+    final = temp;
 }

@@ -49,6 +49,10 @@ public:
     Nodo* merge(Nodo* izquierda, Nodo* derecha);
 
     long long sort(int select);
+    
+    void mergePrincipal();
+
+    void actualizarFinal();
 
 };
 
