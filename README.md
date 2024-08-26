@@ -2,9 +2,9 @@ Readme.txt
 
 Ejecutar el comando
 
-g++ -o programa main.cpp producto.cpp nodo.cpp listaligada.cpp procesos.cpp
+g++ -o programa main.cpp producto.cpp nodo.cpp listaligada.cpp procesos.cpp (para compilar y crear el archivo ejecutable programa)
 
-./programa
+./programa (para ejecutar)
 
 Asegurarse que todos los archivos estén presentes
 
@@ -25,3 +25,7 @@ Posteriormente ingresar el tipo de ordenamiento
 3: mergesort
 
 Disfrutar
+
+Integrantes:
+-Martin Valencia Vallejo
+-Juan Carlos Fernandez Vanoy
